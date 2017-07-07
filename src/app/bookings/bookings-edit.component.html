@@ -1,0 +1,123 @@
+<div class="col-md-12" >
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{message}}</h3>
+        </div>
+        <div class="panel-body">
+            <div *ngIf="booking">
+                <div class="row" >
+                    <div class="col-xs-2">Id</div>
+                    <div class="col-xs-6">{{booking.id}}</div>
+                </div>
+
+                <hr />
+                <div class="row">
+                    <div class="col-xs-2">Date</div>
+                    <div class="col-xs-6">{{booking.startingAtDate}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2">Time</div>
+                    <div class="col-xs-6">{{booking.startingAtTime}}</div>
+                </div>
+               <div class="row">
+                    <div class="col-xs-2">Organiser</div>
+                    <div class="col-xs-6">{{booking.organiser.fullName}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2">Number Of Diners</div>
+                    <div class="col-xs-6">{{booking.numberOfDiners}}</div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-2">
+                        <button (click)="Update()">Update</button>
+                        <a [href]="downloadUrl">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12" *ngIf="!showEditPanel" >
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Diners</h3>
+        </div>
+        <button (click)="deleteSelected()">Delete</button>
+        <div class="panel-body">
+          <div *ngIf="booking && menuSections">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox"
+                          name="selectAll"
+                          (click)="selectAll()"
+                          [checked] = "allChecked()"
+                          /></th>
+                        <th>Name</th>
+                        <th>Notes</th>
+                        <ng-container *ngFor="let menuSection of menuSections;">
+                          <th>{{ menuSection.name }}</th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="height:20px;" *ngFor="let diner of booking.diners" >
+                        <td><input type="checkbox"
+                          name="selectDiner"
+                          value="{{diner.id}}"
+                          [(ngModel)]="diner.checked"/>
+                        </td>
+                        <td>{{diner.fullName}}</td>
+                        <td>{{diner.notes}}</td>
+                        <ng-container *ngFor="let menuSectionMenuItem of diner.menuSectionMenuItems;">
+                          <td>
+                          <ng-container *ngFor="let dinerMenuItem of menuSectionMenuItem.dinerMenuItems;">
+                            <div>{{ dinerMenuItem.menuItem.name }}</div>
+                          </ng-container>
+                          </td>
+                        </ng-container>
+                        <!--<td>
+                            <a *ngIf="securityService.HasAdminRole" href="" [routerLink]="['/bookings/edit/' + dataEventRecord.Id]" >{{dataEventRecord.Name}}</a>
+                            <span *ngIf="!securityService.HasAdminRole">{{dataEventRecord.Name}}</span>
+                        </td>
+                        <td>{{dataEventRecord.Timestamp}}</td>-->
+                        <td><button (click)="editDiner(diner.id)">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12" *ngIf="showEditPanel" >
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Edit Diner</h3>
+        </div>
+         <div class="panel-body">
+            <div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-2">Date</div>
+                    <div class="col-xs-6"><input type="text" [value]="diner.forename" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2">Surname</div>
+                    <div class="col-xs-6"><input type="text" [value]="diner.surname" /></div>
+                </div>
+               <div class="row">
+                    <div class="col-xs-2">Notes</div>
+                    <div class="col-xs-6"><input type="text" [value]="diner.notes" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <button (click)="showAllDiners()">Show all diners</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
