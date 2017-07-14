@@ -8,7 +8,6 @@ import { SecureFilesComponent } from './securefile/securefiles.component';
 import { DATA_RECORDS_ROUTES } from './bookings/bookings.routes';
 
 import { BookingsListComponent } from './bookings/bookings-list.component';
-import { BookingsCreateComponent } from './bookings/bookings-create.component';
 import { BookingsEditComponent } from './bookings/bookings-edit.component';
 
 const appRoutes: Routes = [

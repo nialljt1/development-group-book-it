@@ -1,4 +1,5 @@
 import { DinerMenuItem } from './dinerMenuItem';
+import { MenuItem } from './menuItem';
 import { MenuSectionMenuItem } from './menuSectionMenuItem';
 
 export class Diner {
@@ -12,6 +13,7 @@ export class Diner {
   lastUpdatedAt: Date;
   notes: string;
   checked: boolean;
+  menuItems: (MenuItem | undefined)[];
   menuSectionMenuItems: (MenuSectionMenuItem | undefined)[];
 
   constructor() {

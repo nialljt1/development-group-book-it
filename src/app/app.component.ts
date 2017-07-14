@@ -16,7 +16,6 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { SecureFilesComponent } from './securefile/securefiles.component';
 
 import { BookingsListComponent } from './bookings/bookings-list.component';
-import { BookingsCreateComponent } from './bookings/bookings-create.component';
 import { BookingsEditComponent } from './bookings/bookings-edit.component';
 
 import './app.component.css';

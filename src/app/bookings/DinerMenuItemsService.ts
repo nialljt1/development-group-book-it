@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../app.constants';
 import { SecurityService } from '../services/SecurityService';
 import { MenuSection } from '../../shared/models/menuSection';
+import { DinerMenuItem } from '../../shared/models/dinerMenuItem';
 
 @Injectable()
 export class DinerMenuItemsService {
@@ -16,18 +17,32 @@ export class DinerMenuItemsService {
         this.actionUrl = `${_configuration.Server}api/v1/diner-menu-items/`;
     }
 
-    private setHeaders() {
+    private setHeaders(isGet: boolean = true) {
 
         console.log('setHeaders started');
 
         this.headers = new Headers();
-        this.headers.append('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8');
+        if(isGet)
+        {
+          this.headers.append('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8');
+        }
+        else
+        {
+          this.headers.append('Content-Type', 'application/json');
+        }
+
+
         let token = this._securityService.GetToken();
         if (token !== '') {
             let tokenValue = 'Bearer ' + token;
             console.log('tokenValue:' + tokenValue);
             this.headers.append('Authorization', tokenValue);
         }
+    }
+
+    public Add = (itemToAdd: DinerMenuItem): Observable<Response> => {
+        this.setHeaders(false);
+        return this._http.post(this.actionUrl, JSON.stringify(itemToAdd), { headers: this.headers });
     }
 
     public GetForBooking = (bookingId: string): Observable<any> => {

@@ -1,0 +1,74 @@
+   <div class="panel panel-default"  *ngIf="diner">
+        <div class="panel-heading">
+            <h3 class="panel-title">Edit Diner</h3>
+        </div>
+         <div class="panel-body">
+            <div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-2">Forename</div>
+                    <div class="col-xs-6"><input type="text" [value]="diner.forename" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2">Surname</div>
+                    <div class="col-xs-6"><input type="text" [value]="diner.surname" /></div>
+                </div>
+               <div class="row">
+                    <div class="col-xs-2">Notes</div>
+                    <div class="col-xs-6"><input type="text" [value]="diner.notes" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <button (click)="showAllDiners()">Show all diners</button>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-xs-2">
+                <button (click)="deleteSelectedMenuItems()">Delete Selected</button>
+              </div>
+
+              <div class="col-xs-2">
+                <button (click)="showAddMenuItem()">Add Menu Choices</button>
+              </div>
+            </div>
+            <div class="col-md-12" *ngIf="showAddMenuItemPanel" >
+              <menu-choice-add [diner]="diner" [menuSections]="menuSections"></menu-choice-add>
+            </div>
+
+          <div *ngIf="diner">
+                       <div><h4>Menu choices</h4></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox"
+                          name="selectAllMenuItems"
+                          (click)="selectAllMenuItems()"
+                          [checked] = "allCheckedMenuItems()"
+                          /></th>
+                        <th>Menu Section</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="height:20px;" *ngFor="let menuItem of sortedMenuItems()" >
+                        <td><input type="checkbox"
+                          name="selectMenuItem"
+                          value="{{menuItem.id}}"
+                          [(ngModel)]="menuItem.checked"/>
+                        </td>
+                        <td>{{menuItem.menuSection.name}}</td>
+                        <td>{{menuItem.name}}</td>
+                        <td>{{menuItem.description}}</td>
+                        <td>{{menuItem.notes}}</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+        </div>
+    </div>

@@ -30,9 +30,12 @@ export class MenuSectionsService {
         }
     }
 
-    public GetForMenu = (menuId: number): Observable<any[]> => {
+    public GetForMenu = (menuId: number): Observable<any> => {
         this.setHeaders();
         let options = new RequestOptions({ headers: this.headers });
-        return this._http.get(this.actionUrl + '?sort=displayOrder&filter[menuId]=' + menuId, options).map(res => res.json().data);
+        return this._http.get(this.actionUrl + '?include=menuItems&sort=displayOrder&filter[menuId]=' + menuId, options).map(res => res.json());
     }
+
+
 }
+

@@ -1,9 +1,14 @@
+import { MenuSection } from './menuSection';
 export class MenuItem {
+  id: number;
+  menuSectionName: string;
   menuSectionId: number;
   name: string;
   description: string;
   number: number;
   displayOrder: number;
+  checked: boolean;
+  menuSection: MenuSection;
 
   constructor() {
   }
@@ -18,6 +23,7 @@ export class MenuItem {
     t.description = a.description;
     t.number = a.number;
     t.displayOrder = a.displayOrder;
+    t.id = a.id;
     return t;
   }
 }

@@ -38,12 +38,12 @@
         </div>
     </div>
 </div>
-<div class="col-md-12" *ngIf="!showEditPanel" >
+<div class="col-md-12" *ngIf="!diner" >
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Diners</h3>
         </div>
-        <button (click)="deleteSelected()">Delete</button>
+        <button (click)="deleteSelected()">Delete Selected</button>
         <div class="panel-body">
           <div *ngIf="booking && menuSections">
             <table class="table">
@@ -90,34 +90,8 @@
         </div>
     </div>
 </div>
-
-<div class="col-md-12" *ngIf="showEditPanel" >
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Edit Diner</h3>
-        </div>
-         <div class="panel-body">
-            <div>
-                <hr />
-                <div class="row">
-                    <div class="col-xs-2">Date</div>
-                    <div class="col-xs-6"><input type="text" [value]="diner.forename" /></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-2">Surname</div>
-                    <div class="col-xs-6"><input type="text" [value]="diner.surname" /></div>
-                </div>
-               <div class="row">
-                    <div class="col-xs-2">Notes</div>
-                    <div class="col-xs-6"><input type="text" [value]="diner.notes" /></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-2">
-                        <button (click)="showAllDiners()">Show all diners</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="col-md-12" *ngIf="diner" >
+  <diner-edit (closeDiner)="closeEditDiner()" [diner]="diner" [menuSections]="menuSections"></diner-edit>
 </div>
+
 

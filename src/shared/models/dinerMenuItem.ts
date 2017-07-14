@@ -6,7 +6,7 @@ export class DinerMenuItem {
   note: string;
   quantity: number;
   menuItem: MenuItem | undefined;
-
+  menuItemId: number;
 
   constructor() {
   }
@@ -19,8 +19,6 @@ export class DinerMenuItem {
     t.dinerId = a.dinerId;
     t.note = a.note;
     t.quantity = a.quantity;
-    // // console.log('test5');
-    // // console.log(objectJson);
 
     function getIncludedId(name): string {
       return <string>_.get(o.relationships, name + '.data.id');

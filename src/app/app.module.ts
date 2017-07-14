@@ -22,13 +22,17 @@ import { SecureFilesComponent } from './securefile/securefiles.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { BookingsListComponent } from './bookings/bookings-list.component';
-import { BookingsCreateComponent } from './bookings/bookings-create.component';
 import { BookingsEditComponent } from './bookings/bookings-edit.component';
+import { MenuChoiceAddComponent } from './bookings/menu-choice-add.component';
+import { DinerEditComponent } from './bookings/diner-edit.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { dateFormatPipe } from './../shared/components/pipes';
 import { timeFormatPipe } from './../shared/components/pipes';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule } from '@angular/material';
 
 @NgModule({
     imports: [
@@ -38,7 +42,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         routing,
         HttpModule,
         JsonpModule,
-        AppRoutingModule
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MdButtonModule,
+        MdMenuModule,
+        MdCardModule,
+        MdToolbarModule,
+        MdIconModule
     ],
     declarations: [
         AppComponent,
@@ -47,9 +57,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         UnauthorizedComponent,
         SecureFilesComponent,
         BookingsListComponent,
-        BookingsCreateComponent,
         BookingsEditComponent,
         DashboardComponent,
+        MenuChoiceAddComponent,
+        DinerEditComponent,
         dateFormatPipe,
         timeFormatPipe
     ],

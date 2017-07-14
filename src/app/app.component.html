@@ -1,32 +1,19 @@
-<div class="container">
-  <ngb-tabset>
-    <ngb-tab>
-       <ng-template ngbTabTitle>
-         <a (click)="List()">Bookings</a>
-      </ng-template>
-      <ng-template ngbTabContent>
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab>
-       <ng-template ngbTabTitle>
-         <a (click)="Edit()">Edit</a>
-      </ng-template>
-      <ng-template ngbTabContent>
-      </ng-template>
-    </ngb-tab>
+<nav class="navbar navbar-dark bg-inverse">
+<md-toolbar color="primary">
+    <span class="example-spacer"></span>
+    <button md-button [mdMenuTriggerFor]="appMenu"><md-icon>menu</md-icon></button>
 
+</md-toolbar>
 
-    <ngb-tab *ngIf="!securityService.IsAuthorized()" >
-      <ng-template ngbTabTitle>
-          <div (click)="Login()">Login</div>
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab *ngIf="securityService.IsAuthorized()" >
-      <ng-template ngbTabTitle>
-          <div (click)="Login()">Logout</div>
-      </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+<md-menu #appMenu="mdMenu">
+  <button md-menu-item *ngIf="securityService.IsAuthorized()" (click)="List()"ks> Bookings </button>
+  <button md-menu-item (click)="Edit()"> Booking </button>
+  <button md-menu-item> Restaurant </button>
+  <button md-menu-item> Welcome </button>
+  <button md-menu-item> My email address </button>
+  <button md-menu-item *ngIf="!securityService.IsAuthorized()" (click)="Login()"> Login </button>
+  <button md-menu-item *ngIf="securityService.IsAuthorized()"> Logout </button>
+</md-menu>
 
+</nav>
   <router-outlet></router-outlet>
-</div>

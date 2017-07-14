@@ -1,0 +1,40 @@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Add Menu Choice</h3>
+        </div>
+         <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-2">Menu Section</div>
+                    <div class="col-xs-6">
+                      <select name="menuSections" [(ngModel)]="selectedMenuSectionId" (change)="menuSectionsOnChange($event)">
+                        <option value="0">--Please Select--</option>
+                          <option *ngFor="let menuSection of menuSections" (onchange)="menuSectionsOnChange()" value="{{menuSection.id}}" >{{menuSection.name}}</option>
+                      </select>
+                    </div>
+                </div>
+                <div *ngIf="selectedMenuSection">
+                  <div><h4>Add Menu choices</h4></div>
+
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Description</th>
+                              <th>Notes</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr style="height:20px;" *ngFor="let menuItem of selectedMenuSection.menuItems" >
+                              <td>{{menuItem.name}}</td>
+                              <td>{{menuItem.description}}</td>
+                              <td>{{menuItem.notes}}</td>
+                              <td><button (click)="addMenuItem(menuItem.id)">Add</button></td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </div>
+
+
+         </div>
+     </div>
+

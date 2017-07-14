@@ -1,3 +1,4 @@
+import { MenuSection } from './menuSection';
 import { DinerMenuItem } from './dinerMenuItem';
 
 export class MenuSectionMenuItem {
@@ -5,6 +6,7 @@ export class MenuSectionMenuItem {
   menuSectionName: string;
   dinerMenuItems: DinerMenuItem[];
   displayOrder: number;
+  menuSection: MenuSection;
 
   constructor() {
   }
