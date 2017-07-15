@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-xs-2">Menu Section</div>
                     <div class="col-xs-6">
-                      <select name="menuSections" [(ngModel)]="selectedMenuSectionId" (change)="menuSectionsOnChange($event)">
+                      <select name="menuSections" [(ngModel)]="selectedMenuSectionId" (change)="menuSectionsOnChange()">
                         <option value="0">--Please Select--</option>
                           <option *ngFor="let menuSection of menuSections" (onchange)="menuSectionsOnChange()" value="{{menuSection.id}}" >{{menuSection.name}}</option>
                       </select>

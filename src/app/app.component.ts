@@ -51,6 +51,14 @@ export class AppComponent implements OnInit {
         this.router.navigate(['/bookings/edit/E166F9A4-5B7B-4C9E-6513-08D45597AED5']);
     }
 
+    public Restaurant(){
+      this.router.navigate(['/restaurant/restaurant/']);
+    }
+
+    public Welcome(){
+      this.router.navigate(['/welcome/welcome/']);
+    }
+
     public Login() {
         console.log('Do login logic');
         this.securityService.Authorize();

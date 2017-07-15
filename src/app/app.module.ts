@@ -29,10 +29,11 @@ import { DinerEditComponent } from './bookings/diner-edit.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { dateFormatPipe } from './../shared/components/pipes';
 import { timeFormatPipe } from './../shared/components/pipes';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule } from '@angular/material';
+import { WelcomeComponent } from "app/welcome/welcome.component";
+import { RestaurantComponent } from "app/restaurant/restaurant.component";
 
 @NgModule({
     imports: [
@@ -58,9 +59,10 @@ import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModu
         SecureFilesComponent,
         BookingsListComponent,
         BookingsEditComponent,
-        DashboardComponent,
         MenuChoiceAddComponent,
         DinerEditComponent,
+        WelcomeComponent,
+        RestaurantComponent,
         dateFormatPipe,
         timeFormatPipe
     ],

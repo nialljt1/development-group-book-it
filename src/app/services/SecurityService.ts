@@ -99,7 +99,8 @@ export class SecurityService {
 
         console.log('BEGIN Authorize, no auth data');
 
-        let authorizationUrl = 'http://localhost:44313/connect/authorize';
+        let authorizationUrl = 'http://identity.groupbookit.com/connect/authorize';
+        //let authorizationUrl = 'http://localhost:44313/connect/authorize';
         let client_id = 'angular2client';
         let redirect_uri = 'http://localhost:4200';
         let response_type = 'id_token token';
@@ -182,7 +183,8 @@ export class SecurityService {
         // /connect/endsession?id_token_hint=...&post_logout_redirect_uri=https://myapp.com
         console.log('BEGIN Authorize, no auth data');
 
-        let authorizationUrl = 'http://localhost:44313/connect/endsession';
+        let authorizationUrl = 'http://identity.groupbookit.com/connect/endsession';
+        ////let authorizationUrl = 'http://localhost:44313/connect/endsession';
 
         let id_token_hint = this.retrieve('authorizationDataIdToken');
         let post_logout_redirect_uri = 'http://localhost:4200/';
@@ -277,7 +279,8 @@ export class SecurityService {
 
     private getUserData = (): Observable<string[]> => {
         this.setHeaders();
-        return this._http.get('http://localhost:44313/connect/userinfo', {
+        ////return this._http.get('http://localhost:44313/connect/userinfo', {
+        return this._http.get('http://identity.groupbookit.com/connect/userinfo', {
             headers: this.headers,
             body: ''
         }).map(res => res.json());

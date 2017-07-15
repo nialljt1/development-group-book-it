@@ -1,18 +1,15 @@
 <nav class="navbar navbar-dark bg-inverse">
 <md-toolbar color="primary">
-    <span class="example-spacer"></span>
     <button md-button [mdMenuTriggerFor]="appMenu"><md-icon>menu</md-icon></button>
-
+    <button style="float: right;" md-button *ngIf="!securityService.IsAuthorized()"  (click)="Login()">Login</button>
+    <button style="float: right;" md-button *ngIf="securityService.IsAuthorized()" (click)="Logout()">Logout</button>
 </md-toolbar>
 
 <md-menu #appMenu="mdMenu">
-  <button md-menu-item *ngIf="securityService.IsAuthorized()" (click)="List()"ks> Bookings </button>
+  <button md-menu-item (click)="List()"ks> Bookings </button>
   <button md-menu-item (click)="Edit()"> Booking </button>
-  <button md-menu-item> Restaurant </button>
-  <button md-menu-item> Welcome </button>
-  <button md-menu-item> My email address </button>
-  <button md-menu-item *ngIf="!securityService.IsAuthorized()" (click)="Login()"> Login </button>
-  <button md-menu-item *ngIf="securityService.IsAuthorized()"> Logout </button>
+  <button md-menu-item (click)="Restaurant()"> Restaurant </button>
+  <button md-menu-item (click)="Welcome()"> Welcome </button>
 </md-menu>
 
 </nav>
