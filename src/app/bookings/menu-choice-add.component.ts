@@ -1,3 +1,4 @@
+import { NotificationsService } from 'angular2-notifications';
 import { DinerMenuItemsService } from './DinerMenuItemsService';
 import { DinerMenuItem } from './../../shared/models/dinerMenuItem';
 import { MenuSection } from './../../shared/models/menuSection';
@@ -19,6 +20,7 @@ export class MenuChoiceAddComponent implements OnInit, OnChanges {
 
     constructor(
         private _dinerMenuItemsService: DinerMenuItemsService,
+        private _notificationsService: NotificationsService
     ) {
     }
 
@@ -42,19 +44,17 @@ export class MenuChoiceAddComponent implements OnInit, OnChanges {
       dinerMenuItem.dinerId = this.diner.id;
       dinerMenuItem.menuItemId = id;
       // TODO: need to handle notes
-      // TODO: add notification when menu item added
       this._dinerMenuItemsService.Add(dinerMenuItem)
           .subscribe(response =>
             {
-              console.log(response);
-              var menuItemId = response.json().menuItemId;
               var menuSection = this.menuSections.find(s => s.id == this.selectedMenuSectionId);
-              var menuItem = menuSection.menuItems.find(i => i.id == menuItemId);
+              var menuItem = menuSection.menuItems.find(i => i.id == response.json().menuItemId);
               menuItem.menuSectionName = this.selectedMenuSection.name;
               menuItem.menuSection = this.selectedMenuSection;
+              menuItem.dinerMenuItemId = response.json().id;
               this.diner.menuItems.push(menuItem);
               this.diner.menuItems.sort(a => a.menuSection.displayOrder);
-              console.log(this.diner.menuItems);
+              this._notificationsService.success('Menu Choice Added', 'You have successfully added ' + menuItem.name + ' as a menu choice.');
             }
           );
     }

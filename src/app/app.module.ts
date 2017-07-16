@@ -1,3 +1,4 @@
+import { NotificationsService } from 'angular2-notifications';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,9 +32,11 @@ import { dateFormatPipe } from './../shared/components/pipes';
 import { timeFormatPipe } from './../shared/components/pipes';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule } from '@angular/material';
+import { MaterialModule, MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule } from '@angular/material';
 import { WelcomeComponent } from "app/welcome/welcome.component";
 import { RestaurantComponent } from "app/restaurant/restaurant.component";
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { ConfirmationDialogComponent } from '../shared/components/confirmation/confirmation-dialog.component';
 
 @NgModule({
     imports: [
@@ -49,7 +52,9 @@ import { RestaurantComponent } from "app/restaurant/restaurant.component";
         MdMenuModule,
         MdCardModule,
         MdToolbarModule,
-        MdIconModule
+        MdIconModule,
+        SimpleNotificationsModule.forRoot(),
+        MaterialModule
     ],
     declarations: [
         AppComponent,
@@ -63,6 +68,7 @@ import { RestaurantComponent } from "app/restaurant/restaurant.component";
         DinerEditComponent,
         WelcomeComponent,
         RestaurantComponent,
+        ConfirmationDialogComponent,
         dateFormatPipe,
         timeFormatPipe
     ],
@@ -72,9 +78,11 @@ import { RestaurantComponent } from "app/restaurant/restaurant.component";
         BookingsService,
         MenuSectionsService,
         DinerMenuItemsService,
+        NotificationsService,
         Configuration
     ],
     bootstrap:    [AppComponent],
+    entryComponents: [ConfirmationDialogComponent]
 })
 
 export class AppModule {}

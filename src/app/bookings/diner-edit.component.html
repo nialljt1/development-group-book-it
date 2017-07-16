@@ -1,4 +1,5 @@
-   <div class="panel panel-default"  *ngIf="diner">
+
+<div class="panel panel-default"  *ngIf="diner">
         <div class="panel-heading">
             <h3 class="panel-title">Edit Diner</h3>
         </div>
@@ -50,20 +51,18 @@
                         <th>Menu Section</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr style="height:20px;" *ngFor="let menuItem of sortedMenuItems()" >
                         <td><input type="checkbox"
                           name="selectMenuItem"
-                          value="{{menuItem.id}}"
+                          value="{{menuItem.dinerMenuItemId}}"
                           [(ngModel)]="menuItem.checked"/>
                         </td>
                         <td>{{menuItem.menuSection.name}}</td>
                         <td>{{menuItem.name}}</td>
                         <td>{{menuItem.description}}</td>
-                        <td>{{menuItem.notes}}</td>
                     </tr>
                 </tbody>
             </table>

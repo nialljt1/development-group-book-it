@@ -2,6 +2,7 @@ import { MenuItem } from './menuItem';
 import * as _ from 'lodash';
 
 export class DinerMenuItem {
+  id: number;
   dinerId: number;
   note: string;
   quantity: number;
@@ -16,6 +17,7 @@ export class DinerMenuItem {
     var t = this, o = objectJson, a = o.attributes;
     if (o.type !== 'diner-menu-items') throw new TypeError();
 
+    t.id = o.id;
     t.dinerId = a.dinerId;
     t.note = a.note;
     t.quantity = a.quantity;

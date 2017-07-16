@@ -9,6 +9,7 @@ export class MenuItem {
   displayOrder: number;
   checked: boolean;
   menuSection: MenuSection;
+  dinerMenuItemId: number;
 
   constructor() {
   }

@@ -45,6 +45,14 @@ export class DinerMenuItemsService {
         return this._http.post(this.actionUrl, JSON.stringify(itemToAdd), { headers: this.headers });
     }
 
+    public Delete = (id: number): Observable<Response> => {
+        this.setHeaders(false);
+        console.log(this.actionUrl);
+        return this._http.delete(this.actionUrl + id, {
+            headers: this.headers
+        });
+    }
+
     public GetForBooking = (bookingId: string): Observable<any> => {
         this.setHeaders();
         let options = new RequestOptions({ headers: this.headers });

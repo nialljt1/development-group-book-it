@@ -1,4 +1,4 @@
-    <div class="panel panel-default">
+<div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Add Menu Choice</h3>
         </div>
@@ -20,14 +20,12 @@
                           <tr>
                               <th>Name</th>
                               <th>Description</th>
-                              <th>Notes</th>
                           </tr>
                       </thead>
                       <tbody>
                           <tr style="height:20px;" *ngFor="let menuItem of selectedMenuSection.menuItems" >
                               <td>{{menuItem.name}}</td>
                               <td>{{menuItem.description}}</td>
-                              <td>{{menuItem.notes}}</td>
                               <td><button (click)="addMenuItem(menuItem.id)">Add</button></td>
                           </tr>
                       </tbody>

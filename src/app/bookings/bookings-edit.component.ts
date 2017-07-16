@@ -125,8 +125,9 @@ export class BookingsEditComponent implements OnInit, OnDestroy   {
       this.booking.diners.forEach(diner =>
       {
         var dinerMenuItems = this.dinerMenuItems.filter(i => i.dinerId == diner.id);
-        diner.menuItems = dinerMenuItems.map(a => a.menuItem);
-
+        diner.menuItems = dinerMenuItems.map(a => {
+          a.menuItem.dinerMenuItemId = a.id;
+          return a.menuItem});
         diner.menuItems.forEach(i => {
           i.menuSection = this.menuSections.find(s => s.id == i.menuSectionId);
         });

@@ -65,7 +65,7 @@ export class BookingsService {
             .put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers });
     }
 
-    public Delete = (id: string): Observable<Response> => {
+    public Delete = (id: number): Observable<Response> => {
         this.setHeaders();
         return this._http.delete(this.actionUrl + id, {
             headers: this.headers

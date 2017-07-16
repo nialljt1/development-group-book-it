@@ -31,6 +31,15 @@ export class AppComponent implements OnInit {
 
     title = "app";
 
+    public options = {
+        position: ["bottom", "left"],
+              timeOut: 3000,
+              showProgressBar: true,
+              pauseOnHover: false,
+              clickToClose: true,
+              maxLength: 100
+    }
+
     constructor(public securityService: SecurityService, public router: Router) {
     }
 
